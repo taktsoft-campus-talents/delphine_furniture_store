@@ -1,8 +1,8 @@
+import { Outlet } from "react-router-dom";
 import "./App.css";
 import Login from "./components/Login.jsx";
 import Logout from "./components/Logout.jsx";
-import { Outlet } from "react-router-dom";
-// import Profile from "./components/Profile.jsx";
+import Products from "./components/Products.jsx";
 
 function App() {
   return (
@@ -10,6 +10,7 @@ function App() {
       <Login />
       <Logout />
       <Outlet />
+      <Products />
     </>
   );
 }

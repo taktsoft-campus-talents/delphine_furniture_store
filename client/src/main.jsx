@@ -1,13 +1,14 @@
+import { Auth0Provider } from "@auth0/auth0-react";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import "./index.css";
-import App from "./App.jsx";
-import { Auth0Provider } from "@auth0/auth0-react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import App from "./App.jsx";
+import { config } from "./config.js";
+import "./index.css";
+import Cart from "./pages/Cart.jsx";
 import Home from "./pages/Home.jsx";
 import Products from "./pages/Products.jsx";
 import Profile from "./pages/Profile.jsx";
-import Cart from "./pages/Cart.jsx";
 
 const router = createBrowserRouter([
   {
@@ -37,10 +38,11 @@ const router = createBrowserRouter([
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <Auth0Provider
-      domain="dev-cztbcp64sc3nnull.us.auth0.com"
-      clientId="iuHBt2vkm74iNSIstyIdLG1gWJOvDu4B"
+      domain={config.auth0.domain}
+      clientId={config.auth0.clientId}
       authorizationParams={{
         redirect_uri: window.location.origin,
+        audience: config.auth0.audience,
       }}
     >
       <RouterProvider router={router} />
